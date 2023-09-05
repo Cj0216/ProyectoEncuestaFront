@@ -47,7 +47,7 @@ const FormularioPreguntas = ({ preguntas }) => {
                 >
                   <option value="">Seleccione una respuesta...</option>
                   {pregunta.respuestas.map((respuesta, index) => (
-                    <option key={index} className='break-normal' value={parseInt(respuesta.id)}>
+                    <option key={index} className='break-normal capitalize' value={parseInt(respuesta.id)}>
                       {respuesta.contenido}
                     </option>
                   ))}

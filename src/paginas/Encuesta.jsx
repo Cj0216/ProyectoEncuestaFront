@@ -38,7 +38,7 @@ const Encuesta = () => {
   }
   encuestaRespondida()
   useEffect(() => {
-    Swal.fire({
+     Swal.fire({
       icon: 'info',
       title:
         'Por favor, dedique el tiempo que necesite para responder todas las preguntas. Sus respuestas se guardarán automáticamente incluso si cierra la sesión. Gracias por su participación.',

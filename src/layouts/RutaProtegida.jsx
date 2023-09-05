@@ -1,37 +1,44 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import Header from "../components/Header"
 import Sidebar from "../components/Sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const RutaProtegida = () => {
-    const {auth,cargando} = useAuth()
+    const { auth, cargando } = useAuth()
+    const navigate = useNavigate()
+    const token = localStorage.getItem("token")
 
-    const rol = auth.rol
-    const active = rol ? "1" : ""
+    useEffect(() => {
+        if (!token) {
+            navigate("/")
 
+        }
+        if (auth.rol == 1) {
+            navigate("/admin")
+
+        }
+    }, [])
     if (cargando) {
-        return("Cargando...")
+        return ("Cargando...")
     }
 
-  return (
-    <>
-        {auth.id ? (
-            <div className="bg-gray-100">
-                <Header/>
-                <div className={active ? "flex" : ""}>
 
-                {rol === 1 && <Sidebar/>}
+    return (
+        <>
+            {auth.id ? (
+                <div className="bg-gray-100">
+                    <Header />
 
-                <main className="w-full">
-                    <Outlet/>
-                </main>
+                    <main className="w-full">
+                        <Outlet />
+                    </main>
+
                 </div>
-            </div>
-        ) : <Navigate to="/" />}
-    </>
-  )
+            ) : <Navigate to="/" />}
+        </>
+    )
 }
 
 export default RutaProtegida

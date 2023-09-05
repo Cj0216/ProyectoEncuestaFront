@@ -51,6 +51,11 @@ const Foros = () => {
       
   return (
     <div className="container mx-auto mt-3">
+      <div className='flex justify-end text-xl font-bol'>
+      <Link to={"/encuesta"} className='p-3 bg-indigo-700 text-white font-bold rounded-r-lg'>
+        Omitir
+      </Link>
+    </div>
     <h1 className="text-3xl font-bold mb-2">Foros disponibles</h1>
     <div className="md:grid md:grid-cols-2 xl:grid-cols-3  sm:block sm:p-4  gap-5">
       {cardData.map((card, index) => (
@@ -74,11 +79,7 @@ const Foros = () => {
       ))}
       
     </div>
-    <div className='mt-10 flex justify-end text-xl font-bold underline text-blue-600'>
-      <Link to={"/encuesta"} >
-        Omitir
-      </Link>
-    </div>
+    
   </div>
   )
 }
