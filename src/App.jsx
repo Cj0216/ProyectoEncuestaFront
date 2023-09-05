@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom"
 import AuthLayout from "./layouts/AuthLayout"
 import Login from "./paginas/Login"
 import Registrar from "./paginas/Registrar"
@@ -20,7 +20,7 @@ import TablaEncuesta from "./components/TablaEncuesta"
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <AuthProvider>
           <EncuestaProvider>
             <Routes>
@@ -48,7 +48,7 @@ function App() {
             </Routes>
           </EncuestaProvider>
         </AuthProvider>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }

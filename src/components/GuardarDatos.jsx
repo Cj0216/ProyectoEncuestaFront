@@ -24,7 +24,7 @@ const GuardarDatos = (encuesta) => {
     const GuardarEncuesta = async () => {
 
         try {
-            const { data } = await axios.post('http://localhost:4000/api/encuesta/registrar', { idUser, respuestasSeleccionadas: respuestas })
+            const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/encuesta/registrar`, { idUser, respuestasSeleccionadas: respuestas })
             
             await Swal.fire(
                 'Muy bien!',
