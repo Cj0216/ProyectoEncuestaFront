@@ -47,9 +47,9 @@ const Login = () => {
     const { msg } = alerta
 
     return (
-        <div className="flex w-screen space-x-10 bg-white p-5 justify-center min-h-screen items-center">
-            <div className="w-2/5 bg-white p-5 shadow-lg">
-                <h1 className="text-indigo-700 font-black text-5xl capitalize">Inicia sesión y responde la encuesta</h1>
+        <div className="lg:flex w-screen space-x-10 bg-white p-5 justify-center min-h-screen items-center">
+            <div className="lg:w-2/5 md:w-full bg-white p-5 shadow-lg">
+                <h1 className="text-indigo-700 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black capitalize">Inicia sesión y responde la encuesta</h1>
 
                 <form className="my-10 bg-white shadow rounded-lg p-5"
                     onSubmit={handleSubmit}
@@ -57,7 +57,7 @@ const Login = () => {
                     <div className="my-5">
                         <label
                             htmlFor="email"
-                            className="uppercase text-gray-600 block text-xl font-bold"
+                            className="uppercase text-gray-600 block text-lg lg:text-xl font-bold"
                         >Email</label>
                         <input type="email"
                             placeholder="Ingresa tu email"
@@ -70,7 +70,7 @@ const Login = () => {
                     <div className="my-5">
                         <label
                             htmlFor="password"
-                            className="uppercase text-gray-600 block text-xl font-bold"
+                            className="uppercase text-gray-600 block text-lg lg:text-xl font-bold"
                         >Contraseña</label>
                         <input type="password"
                             placeholder="Ingresa tu contraseña"
@@ -96,8 +96,8 @@ const Login = () => {
                     </Link>
                 </nav>
             </div>
-            <div className="w-3/5 ">
-                <img src="./Logo.png" alt="" className="w-auto" />
+            <div className="hidden lg:block md:w-3/5 ">
+                <img src="./Logo.png" alt="" className="w-auto " />
             </div>
         </div>
     )

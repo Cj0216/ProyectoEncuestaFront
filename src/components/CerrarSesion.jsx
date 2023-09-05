@@ -15,7 +15,7 @@ const CerrarSesion = () => {
     }
     return (
         <button 
-        className='p-3 bg-red-500 rounded-xl float-right font-bold hover:bg-red-600' 
+        className='p-2 bg-red-500 rounded-xl float-right font-medium text-sm  md:font-bold hover:bg-red-600' 
         onClick={handleClick}
         
         >Cerrar Sesion</button>

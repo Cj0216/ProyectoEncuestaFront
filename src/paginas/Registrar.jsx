@@ -91,11 +91,11 @@ const Registrar = () => {
   }
   const { msg } = alerta
   return (
-    <div className="flex w-screen space-x-10 bg-white p-5 justify-center min-h-screen items-center">
-      <div className="w-3/5 flex justify-center items-center">
+    <div className="block md:flex w-screen md:space-x-10 bg-white p-5 justify-center min-h-screen items-center">
+      <div className="hidden md:flex md:w-3/5  justify-center items-center">
         <img src="./Logo.png" alt="" className="w-auto" />
       </div>
-      <div className="w-2/5 bg-white p-5 shadow-lg">
+      <div className="w-full flex flex-col mx-auto md:w-2/5 bg-white p-5 shadow-lg">
 
         <h1 className="text-indigo-600 font-black text-5xl capitalize">Crea tu cuenta</h1>
 

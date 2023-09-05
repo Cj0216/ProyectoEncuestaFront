@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../hooks/useAuth';
@@ -25,9 +25,12 @@ const Foros = () => {
           description: "Foro de mujeres en el teatro de la ciudad",
         },
       ];
-      if (auth.foro === 1) {
-        navigate("/encuesta")
-      }
+      useEffect(() => {
+        if (auth.foro === 1) {
+          navigate("/encuesta")
+        }
+      }, [])
+      
       const handleClick = async (foro) => {
 
           try {

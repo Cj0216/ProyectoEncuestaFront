@@ -11,7 +11,7 @@ import Encuesta from "./paginas/Encuesta"
 import EncuestaContext, { EncuestaProvider } from "./context/EncuestaContext"
 import Foros from "./paginas/Foros"
 import Admin from "./paginas/Admin"
-
+import RutaAdmin from "./layouts/AuthLayout"
 import FormPreguntas from "./components/FormPreguntas"
 import Resultado from "./paginas/Resultado"
 import TablaEncuesta from "./components/TablaEncuesta"
@@ -40,7 +40,7 @@ function App() {
                 
 
               </Route>
-              <Route path="/admin" element={<RutaProtegida />}>
+              <Route path="/admin" element={<RutaAdmin/>}>
                 <Route index element={<Admin />} />
                 <Route path="preguntas" element={<FormPreguntas />} />
                 <Route path="estadisticas" element={<TablaEncuesta />} />

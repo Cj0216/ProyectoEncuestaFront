@@ -1,18 +1,28 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
+import { useEffect } from "react"
 const AuthLayout = () => {
+    const token = localStorage.getItem("token")
+    console.log(token)
+    
     const { auth } = useAuth() || {}
         const navigate = useNavigate()
-    switch (auth.rol) {
-        case 1:
-            navigate("/admin")
-            break;
-        case 0:
-            navigate("/foro")
-            break;
-        default:
-            break;
-    }
+    useEffect(() => {
+        if (token) {
+         navigate("/foro")
+        }
+        switch (auth.rol) {
+            case 1:
+                navigate("/admin")
+                break;
+            case 0:
+                navigate("/foro")
+                break;
+            default:
+                break;
+        }
+    }, [])
+    
     return (
         <>
             <main className="container">

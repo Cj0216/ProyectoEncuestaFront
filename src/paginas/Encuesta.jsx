@@ -50,7 +50,7 @@ const Encuesta = () => {
   };
   return (
     <>
-      <div className="mx-auto flex rounded-md lg:w-3/4 mt-10">
+      <div className="mx-auto flex justify-center rounded-md lg:w-3/4 mt-10">
         <BotonCategoria
           categoria="personal"
           categoriaSeleccionada={categoriaSeleccionada}

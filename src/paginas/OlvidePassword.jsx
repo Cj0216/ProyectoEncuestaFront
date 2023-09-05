@@ -35,7 +35,7 @@ const OlvidePassword = () => {
   return (
 
     <div className="p-10 m-5 w-screen ">
-      <div className="flex flex-col justify-center mx-auto w-2/5 ">
+      <div className="flex flex-col justify-center mx-auto md:w-2/5 ">
         <h1 className="text-sky-600 font-black text-5xl capitalize">Recuperar tu contraseña</h1>
 
         <form

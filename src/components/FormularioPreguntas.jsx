@@ -36,18 +36,18 @@ const FormularioPreguntas = ({ preguntas }) => {
     <div className="bg-white px-5 min-h-screen mx-auto rounded-md lg:w-3/4">
       <div className="md:flex md:flex-col text-center p-3">
         {preguntas.map((pregunta, index) => (
-          <div key={pregunta.id} className="rounded-sm">
+          <div key={pregunta.id} className="rounded-sm flex flex-col justify-center items-center">
             <h1 className="md:text-2xl md:font-black my-3 sm:text-sm sm:font-bold">{`${index + 1}.-${pregunta.titulo}`}</h1>
-            <div className="md:flex justify-center gap-5 p-5 my-3 sm:block">
+            <div className="flex justify-center  w-full gap-5 p-5 my-3 ">
               {pregunta.respuestas.length > 2 ? (
                 <select
-                  className="md:text-xl md:font-semibold p-3 sm:text-sm sm:font-medium border-2 w-1/2 text-center rounded-xl"
+                  className="md:text-xl md:font-semibold p-3 sm:text-sm sm:font-medium border-2  rounded-xl block w-full text-center truncate"
                   onChange={e => handleRespuestaChange(pregunta.id, e.target.value)}
                   value={respuestasSeleccionadas[pregunta.id] || ''}
                 >
                   <option value="">Seleccione una respuesta...</option>
                   {pregunta.respuestas.map((respuesta, index) => (
-                    <option key={index} value={parseInt(respuesta.id)}>
+                    <option key={index} className='break-normal' value={parseInt(respuesta.id)}>
                       {respuesta.contenido}
                     </option>
                   ))}
