@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import Alerta from './Alerta'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 const FormPreguntas = () => {
     const [pregunta, setPregunta] = useState("")
     const [categoria, setCategoria] = useState("")
     const [respuestas, setRespuestas] = useState([])
     const [alerta, setAlerta] = useState({})
     const { msg } = alerta
+    
     const agregarRespuesta = () => {
         setRespuestas([...respuestas, '']);
     };
@@ -56,6 +58,7 @@ const FormPreguntas = () => {
     };
     return (
         <div className='mx-auto w-1/2 justify-center'>
+            <Link to={"./editar"}>Editar preguntas</Link>
             <h1 className="text-indigo-600 font-black text-5xl capitalize">Añade una nueva pregunta</h1>
 
             <form className="my-10 bg-white shadow rounded-lg p-5"

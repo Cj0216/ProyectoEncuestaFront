@@ -15,8 +15,9 @@ import FormPreguntas from "./components/FormPreguntas"
 import Resultado from "./paginas/Resultado"
 import TablaEncuesta from "./components/TablaEncuesta"
 import RutaAdmin from "./layouts/RutaAdmin"
+import EditarPreguntas from "./components/EditarPreguntas"
+import EditarRespuesta from "./components/EditarRespuesta"
 
-RutaAdmin
 function App() {
   return (
     <>
@@ -43,6 +44,8 @@ function App() {
               <Route path="/admin" element={<RutaAdmin />}>
                 <Route index element={<Admin />} />
                 <Route path="preguntas" element={<FormPreguntas />} />
+                <Route path="preguntas/editar" element={<EditarPreguntas />} />
+                <Route path="respuesta/editar/:id" element={<EditarRespuesta />} />
                 <Route path="estadisticas" element={<TablaEncuesta />} />
               </Route>
             </Routes>
