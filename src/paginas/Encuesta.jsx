@@ -9,36 +9,41 @@ import { useNavigate } from 'react-router-dom';
 
 const Encuesta = () => {
   const { preguntas, handleCategoriaClick, categoriaSeleccionada } = useEncuesta() || [];
+  const [isOpen, setIsOpen] = useState(false)
   const [mostrarFormulario, setMostrarFormulario] = useState(true);
   const navigate = useNavigate()
-  const {auth} = useAuth()
+  const { auth } = useAuth()
   const idUser = auth.id
-  const encuestaRespondida = async()=>{
+  const toggleOpen = () => {
+    setIsOpen(!isOpen)
+    console.log(isOpen)
+  }
+  const encuestaRespondida = async () => {
     const token = localStorage.getItem('token')
     if (!token) {
-      
+
       return
-  }
-  const config = {
+    }
+    const config = {
       headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       }
-  }
+    }
     try {
       const url = `${import.meta.env.VITE_BACKEND_URL}/api/encuesta/resultado/${idUser}`
       const { data } = await axios(url, config)
-    if(data.data.length>0){
-      navigate("resultado")
+      if (data.data.length > 0) {
+        navigate("resultado")
+      }
+
+    } catch (error) {
+      console.log(error)
     }
-     
-  } catch (error) {
-    console.log(error)
-  } 
   }
   encuestaRespondida()
   useEffect(() => {
-     Swal.fire({
+    Swal.fire({
       icon: 'info',
       title:
         'Por favor, dedique el tiempo que necesite para responder todas las preguntas. Sus respuestas se guardarán automáticamente incluso si cierra la sesión. Gracias por su participación.',
@@ -47,38 +52,61 @@ const Encuesta = () => {
   const handleMostrarFormulario = (categoria) => {
     handleCategoriaClick(categoria);
     setMostrarFormulario(true);
+    setIsOpen(!isOpen)
   };
   return (
     <>
-      <div className="mx-auto flex justify-center rounded-md lg:w-3/4 mt-10">
-        <BotonCategoria
-          categoria="personal"
-          categoriaSeleccionada={categoriaSeleccionada}
-          onClick={() => handleMostrarFormulario('')}
-        />
-        <BotonCategoria
-          categoria="academica"
-          categoriaSeleccionada={categoriaSeleccionada}
-          onClick={() => handleMostrarFormulario('academica')}
-        />
-        <BotonCategoria
-          categoria="familiar"
-          categoriaSeleccionada={categoriaSeleccionada}
-          onClick={() => handleMostrarFormulario('familiar')}
-        />
-        <BotonCategoria
-          categoria="institucional"
-          categoriaSeleccionada={categoriaSeleccionada}
-          onClick={() => handleMostrarFormulario('institucional')}
-        />
-      </div>
+      
 
       {mostrarFormulario && (
         <FormularioPreguntas
           preguntas={preguntas.filter((pregunta) => pregunta.categoria === categoriaSeleccionada)}
         />
       )}
-    
+      <div className='fixed bottom-4 left-4'>
+
+        <div className="relative inline-block text-left">
+        {isOpen && (
+            <div className="  rounded-md lg:w-3/4 ">
+            <BotonCategoria
+              categoria="Información personal"
+              categoriaSeleccionada={categoriaSeleccionada}
+              onClick={() => handleMostrarFormulario('')}
+            />
+            <BotonCategoria
+              categoria="Información academica"
+              categoriaSeleccionada={categoriaSeleccionada}
+              onClick={() => handleMostrarFormulario('academica')}
+            />
+            <BotonCategoria
+              categoria="Relación familia-trabajo"
+              categoriaSeleccionada={categoriaSeleccionada}
+              onClick={() => handleMostrarFormulario('familiar')}
+            />
+            <BotonCategoria
+              categoria="Ambiente institucional"
+              categoriaSeleccionada={categoriaSeleccionada}
+              onClick={() => handleMostrarFormulario('institucional')}
+            />
+            <BotonCategoria
+              categoria="Obstáculos"
+              categoriaSeleccionada={categoriaSeleccionada}
+              onClick={() => handleMostrarFormulario('obstaculos')}
+            />
+          </div>
+          )}
+          <button
+            onClick={toggleOpen}
+            type="button"
+            className="p-4 text-sm font-medium text-white bg-indigo-600 rounded-xl focus:outline-none focus:ring focus:ring-indigo-400"
+          >
+            Categorias
+          </button>
+
+          
+        </div>
+      </div>
+
     </>
   );
 };

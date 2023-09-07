@@ -6,6 +6,7 @@ const FormPreguntas = () => {
     const [pregunta, setPregunta] = useState("")
     const [categoria, setCategoria] = useState("")
     const [respuestas, setRespuestas] = useState([])
+    const [tipo, setTipo] = useState(0)
     const [alerta, setAlerta] = useState({})
     const { msg } = alerta
     
@@ -24,10 +25,10 @@ const FormPreguntas = () => {
         nuevasRespuestas.splice(index, 1);
         setRespuestas(nuevasRespuestas);
     };
-
+    console.log(tipo)
     const guardarPreguntaYRespuestas = async (e) => {
         e.preventDefault();
-        if([pregunta,categoria,respuestas].includes("") ){
+        if([pregunta,categoria,respuestas,tipo].includes("") ){
             setAlerta({
                 msg:"Todos los campos son obligatorios",
                 error:true
@@ -36,7 +37,7 @@ const FormPreguntas = () => {
         }
         try {
             const url = `${import.meta.env.VITE_BACKEND_URL}/api/preguntas/agregar/`
-            const {data} = await axios.post(url, {titulo:pregunta,categoria,respuestas})
+            const {data} = await axios.post(url, {titulo:pregunta,tipo,categoria,respuestas})
             setAlerta({
                 msg: data,
                 error:false
@@ -50,6 +51,7 @@ const FormPreguntas = () => {
         setAlerta({})
         setPregunta("")
         setCategoria("")
+        setTipo(0)
         setRespuestas([])
         // Aquí puedes guardar la pregunta y las respuestas donde sea necesario,
         // por ejemplo, en una base de datos, en el localStorage, o en un estado
@@ -86,20 +88,32 @@ const FormPreguntas = () => {
                         <option >--Selecciona una categoria--</option>
                         <option value="Información Personal">Información Personal</option>
                         <option value="academica">Información Academica</option>
-                        <option value="familiar">Información Familiar</option>
-                        <option value="institucional">Información institucional</option>
+                        <option value="familiar">Relación familia-trabajo</option>
+                        <option value="institucional">Ambiente institucional</option>
+                        <option value="obstaculos">Obstáculos</option>
+                    </select>
+                </div>
+                <div className="my-5">
+                    <label
+                        htmlFor="tipo"
+                        className="uppercase text-gray-600 block text-xl font-bold"
+                    >Tipo</label>
+                    <select id="tipo" className='w-full mt-3 p-3 border rounded-xl bg-gray-50' value={tipo} onChange={(e)=>setTipo(e.target.value)}>
+                        <option >--Selecciona una categoria--</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
                     </select>
                 </div>
                 <div className="my-5">
                 <label
-                        htmlFor="categoria"
+                        htmlFor="respuestas"
                         className="uppercase text-gray-600 block text-xl font-bold"
                     >Respuestas</label>
                 {respuestas.map((respuesta, index) => (
                     <div key={index} className=''>
                         <input
                             type="text"
-                            
+                            id='respuestas'
                             onChange={(e) => actualizarRespuesta(index, e.target.value)}
                             className='w-10/12 mt-3 p-3 border rounded-xl bg-gray-50'
                         />

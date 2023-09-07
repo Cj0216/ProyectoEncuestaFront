@@ -43,20 +43,20 @@ const Registrar = () => {
       })
       return
     }
-    if (validarCURP(curp) == "Hombre") {
+    if (validarCURP(curp) == "Masculino") {
       setAlerta({
         msg: "Este sistema es unicamente para mujeres",
         error: true
       })
-      setGenero("Hombre")
+      setGenero("Masculino")
       return
     }
-    if (genero == "Hombre") {
+    if (genero == "Masculino") {
       setAlerta({
         msg: "Este sistema es unicamente para mujeres",
         error: true
       })
-      setGenero("Hombre")
+      setGenero("Masculino")
       return
     }
 
@@ -137,8 +137,8 @@ const Registrar = () => {
             >¿Con que genero se identifica?</label>
             <select id="genero" value={genero} onChange={(e) => setGenero(e.target.value)} className="w-full mt-3 p-3 border rounded-xl bg-gray-50">
               <option value="">---Seleccione---</option>
-              <option value="Hombre">Hombre</option>
-              <option value="Mujer">Mujer</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
             </select>
           </div>
 
@@ -193,7 +193,7 @@ const Registrar = () => {
             <label
               htmlFor="privacidad"
               className="uppercase text-gray-600 block text-xs font-semibold"
-            >Aviso de privacidad</label>
+            >He ledido el <Link to={"/privacidad"} className="text-blue-500 underline">acuerdo de privacidad</Link> y estoy de acuerdo</label>
           </div>
           <input
             type="submit"

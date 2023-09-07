@@ -42,7 +42,7 @@ const GuardarDatos = (encuesta) => {
     return (
         <>
             {mostrarBoton && (
-                <div className="fixed bottom-0 right-0 md:right-1">
+                <div className="fixed bottom-4 right-3 md:right-1">
                     <button type="button" onClick={GuardarEncuesta} className="p-4 mx-5 none bg-indigo-400 text-white font-bold rounded-xl">Guardar Respuestas</button>
                 </div>
             )}

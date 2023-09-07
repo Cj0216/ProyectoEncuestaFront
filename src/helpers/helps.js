@@ -34,10 +34,10 @@ function obtenerGeneroPorCURP(curp) {
   const genero = curp.charAt(10);
 
   // Determinar si es hombre o mujer
-  if (genero === 'H') {
-    return "Hombre";
-  } else if (genero === 'M') {
-    return "Mujer";
+  if (genero === 'M') {
+    return "Masculino";
+  } else if (genero === 'Femenino') {
+    return "Femenino";
   } else {
     return "Género desconocido";
   }

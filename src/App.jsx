@@ -17,6 +17,7 @@ import TablaEncuesta from "./components/TablaEncuesta"
 import RutaAdmin from "./layouts/RutaAdmin"
 import EditarPreguntas from "./components/EditarPreguntas"
 import EditarRespuesta from "./components/EditarRespuesta"
+import Aviso from "./components/Aviso"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path="recuperar-password" element={<OlvidePassword />} />
                 <Route path="recuperar-password/:token" element={<NuevoPassword />} />
                 <Route path="confirmar/:id" element={<ConfirmarCuenta />} />
+                <Route path="privacidad" element={<Aviso />} />
               </Route>
               <Route path="/foro" element={<RutaProtegida />}>
                 <Route index element={<Foros />} />
