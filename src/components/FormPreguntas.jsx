@@ -25,7 +25,6 @@ const FormPreguntas = () => {
         nuevasRespuestas.splice(index, 1);
         setRespuestas(nuevasRespuestas);
     };
-    console.log(tipo)
     const guardarPreguntaYRespuestas = async (e) => {
         e.preventDefault();
         if([pregunta,categoria,respuestas,tipo].includes("") ){

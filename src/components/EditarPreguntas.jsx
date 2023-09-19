@@ -2,7 +2,7 @@ import useEncuesta from "../hooks/useEncuesta"
 
 const EditarPreguntas = () => {
     const { preguntas } = useEncuesta()
-    console.log(preguntas)
+
     return (
         <div>
             {preguntas.map(pregunta => (

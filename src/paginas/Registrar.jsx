@@ -126,7 +126,7 @@ const Registrar = () => {
               id="Curp"
               value={curp}
               onChange={e => setCurp(e.target.value)}
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              className="w-full mt-3 p-3 border rounded-xl bg-gray-50 uppercase"
             />
           </div>
 

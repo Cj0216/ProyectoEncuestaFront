@@ -42,7 +42,7 @@ const EncuestaProvider = ({children})=>{
           try {
               const url = `${import.meta.env.VITE_BACKEND_URL}/api/encuesta/resultadoPreguntas`
               const  data  = await axios(url,config)
-              setResultado(data.data)
+              setResultado(data.data[0])
           } catch (error) {
             setResultado(error)
           }finally {

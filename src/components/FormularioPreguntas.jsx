@@ -19,7 +19,6 @@ const FormularioPreguntas = ({ preguntas }) => {
       [preguntaId]: respuestaContenido,
     }));
   };
-  console.log(encuesta)
   useEffect(() => {
     // Guardar las respuestas seleccionadas en el Local Storage
     localStorage.setItem('respuestasSeleccionadas', JSON.stringify(respuestasSeleccionadas));
@@ -38,7 +37,7 @@ const FormularioPreguntas = ({ preguntas }) => {
         {preguntas.map((pregunta, index) => (
           <div key={pregunta.id} className="rounded-sm flex flex-col justify-center items-center">
             <h1 className="md:text-2xl md:font-black my-3 sm:text-sm sm:font-bold">{`${index + 1}.-${pregunta.titulo}`}</h1>
-            <div className={`${pregunta.tipo === 1 ? "grid grid-cols-2 gap-4":"flex"} justify-center  w-full gap-5 p-5 my-3 `}>
+            <div className={`${pregunta.tipo === 1 ? "grid md:grid-cols-2 gap-4":"flex"} justify-center  w-full gap-5 p-5 my-3 `}>
               {pregunta.tipo === 1 && pregunta.respuestas.length > 3 ? (
                 pregunta.respuestas.map((respuesta, index) => (
                   <div key={index} className="flex items-center">

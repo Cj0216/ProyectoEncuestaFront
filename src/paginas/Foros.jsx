@@ -26,7 +26,7 @@ const Foros = () => {
         },
       ];
       useEffect(() => {
-        if (auth.foro === 1) {
+        if (auth.foro !== 0) {
           navigate("/encuesta")
         }
       }, [])
@@ -48,13 +48,28 @@ const Foros = () => {
         }
 
       }
+      const handleOmitir = async ()=>{
+        try {
+          await Swal.fire(
+            'Muy bien!',
+            'Agradecemos su participacion en la encuesta!',
+            'success'
+          )
+          const url = `${import.meta.env.VITE_BACKEND_URL}/api/usuarios/omitir`
+          const { data } = await axios.post(url,{email})
+          navigate("/encuesta")
+
+      } catch (error) {
+          console.log(error)
+      }
+      }
       
   return (
     <div className="container mx-auto mt-3">
       <div className='flex justify-end text-xl font-bol'>
-      <Link to={"/encuesta"} className='p-3 bg-indigo-700 text-white font-bold rounded-r-lg'>
-        Omitir
-      </Link>
+      <button onClick={handleOmitir} className='p-3 bg-indigo-700 text-white font-bold rounded-lg'>
+        No puedo asistir a los foros presenciales
+      </button>
     </div>
     <h1 className="text-3xl font-bold mb-2">Foros disponibles</h1>
     <div className="md:grid md:grid-cols-2 xl:grid-cols-3  sm:block sm:p-4  gap-5">

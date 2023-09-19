@@ -10,7 +10,7 @@ const Header = () => {
         </div>
         <div className="md:w-4/12 hidden md:flex justify-center items-center" >
           <img src="../Logos2.png" alt="" />
-          <img src="../Logo Colver.png" className="h-14 w-1/6" alt="" />
+          <img src="../Logo Colver.png" className="h-10 w-1/6" alt="" />
         </div>
         <div className="">
           <CerrarSesion />

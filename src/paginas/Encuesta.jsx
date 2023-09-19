@@ -16,7 +16,7 @@ const Encuesta = () => {
   const idUser = auth.id
   const toggleOpen = () => {
     setIsOpen(!isOpen)
-    console.log(isOpen)
+
   }
   const encuestaRespondida = async () => {
     const token = localStorage.getItem('token')
@@ -61,6 +61,8 @@ const Encuesta = () => {
       {mostrarFormulario && (
         <FormularioPreguntas
           preguntas={preguntas.filter((pregunta) => pregunta.categoria === categoriaSeleccionada)}
+          categoriaSeleccionada={categoriaSeleccionada}
+
         />
       )}
       <div className='fixed bottom-4 left-4'>

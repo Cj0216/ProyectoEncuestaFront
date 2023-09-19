@@ -8,7 +8,7 @@ const EditarRespeusta = () => {
   const obtenerRespuesta = async()=>{
     try {
       const {data} = await axios(`http://localhost:4000/api/preguntas/obtenerRespuesta/${id}`)
-      console.log(data)
+
       setRespuesta(data)
     } catch (error) { 
       console.log(error)
@@ -16,7 +16,7 @@ const EditarRespeusta = () => {
   }
   useEffect(() => {
     obtenerRespuesta()
-    console.log(respuesta)
+
   }, [])
   
   return (
